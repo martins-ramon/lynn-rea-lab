@@ -1,0 +1,16 @@
+.slide-header{height:36px;min-height:36px}
+.brand{height:36px;flex-shrink:0;line-height:1}
+.brand .lynn-logo{display:block;height:36px;width:auto;max-width:none;object-fit:contain}
+.brand>span{white-space:nowrap}
+.company{display:flex;align-items:center;justify-content:flex-end;height:36px;flex-shrink:0;line-height:1}
+.company .totvs-white{display:block;width:113px;height:36px;object-fit:contain}
+.company .totvs-dark-crop{display:none;position:relative;overflow:hidden;width:113px;height:33px}
+.company .totvs-dark-crop img{position:absolute;width:173px;height:auto;max-width:none;left:-30px;top:-29px}
+.light .company .totvs-white{display:none}
+.light .company .totvs-dark-crop{display:block}
+.compact .slide-header{height:30px;min-height:30px;align-items:center}
+.compact .brand,.compact .company{height:30px}
+.compact .brand .lynn-logo{height:30px}
+.compact .company .totvs-white{width:94.17px;height:30px}
+.compact .company .totvs-dark-crop{width:94.17px;height:27.5px}
+.compact .company .totvs-dark-crop img{width:144.17px;left:-25px;top:-24.17px}

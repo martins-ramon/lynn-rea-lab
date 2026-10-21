@@ -1,0 +1,11 @@
+{
+  "name": "lynn-capacidades-para-agentes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentação HTML de 10 slides sobre geração assistida de tools e MCPs para o LYNN.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs dist"
+  }
+}

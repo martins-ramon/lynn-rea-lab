@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vercel/
+.claude-flow/
+.swarm/
+ruvector.db*
+.DS_Store
+lynn-apresentacao-vercel.zip

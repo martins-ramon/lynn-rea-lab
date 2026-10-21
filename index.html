@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101126">
+  <meta name="description" content="Proposta e plano tático para acelerar a criação de tools e MCPs para o LYNN Studio. Revisão alinhada ao LYNN Agent Engine V2, com piloto de seis semanas e critérios de qualidade.">
+  <title>LYNN Studio — Capacidades para agentes</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="brand.css">
+  <link rel="stylesheet" href="simulation.css">
+  <script src="deck.js" defer></script>
+  <script src="simulation.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#deck">Ir para a apresentação</a>
+<div id="viewport"><div id="deck-frame"><main id="deck" aria-label="Apresentação LYNN Studio, 10 slides">
+
+  <section class="slide cover active" id="slide-1" data-title="A ideia: ampliar o que os agentes conseguem fazer" aria-labelledby="title-1">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>IDEIA + PLANO TÁTICO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <div class="cover-layout">
+        <div class="cover-copy">
+          <p class="eyebrow">CAPACIDADES DE NEGÓCIO PARA AGENTES</p>
+          <h1 id="title-1">Mais do ERP.<br> <span class="gradient-text">Ao alcance<br> dos agentes.</span></h1>
+          <p class="cover-lead">Usar IA para descobrir, gerar e homologar tools dos produtos TOTVS para o LYNN.</p>
+          <p class="cover-sub">Uma esteira de criação assistida para a execução durável do LYNN V2. REA como candidato à investigação.</p>
+        </div>
+        <figure class="cover-figure" aria-label="Conhecimento do produto convertido em capacidades homologadas, reutilizadas por agentes">
+          <div class="figure-label">A IDEIA EM UMA IMAGEM</div>
+          <div class="cover-layer product-layer"><span class="layer-no">01</span><div><strong>Conhecimento do produto</strong><span>APIs, objetos, código e demonstrações</span></div></div>
+          <div class="flow-join"><span>descoberta + geração assistida</span></div>
+          <div class="cover-layer tool-layer"><span class="layer-no">02</span><div><strong>Capacidades homologadas</strong><span>Contrato, integração V2, testes e dono</span></div></div>
+          <div class="flow-join"><span>publicação + reuso no LYNN</span></div>
+          <div class="cover-layer agent-layer"><span class="layer-no">03</span><div><strong>Tarefas concluídas</strong><span>Cobrança, compras, vendas e operação</span></div></div>
+          <figcaption>O valor está na tarefa correta que a capacidade habilita.</figcaption>
+        </figure>
+      </div>
+      <footer class="slide-footer"><span>Proposta de experimentação · Revisada para o Agent Engine V2 · 21 out. 2026</span><span>01 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>Parecer da revisão V2</h3><p>A ideia continua válida. A nova arquitetura reforça a separação entre a engenharia que produz capacidades e o motor que as executa. A entrega passa a ser um pacote homologável: contrato, adaptador versionado, configuração para o Tool Service, manifesto de teste e evidências de negócio e recuperação.</p><p>REA permanece um candidato de engenharia. HTTP e MCP são caminhos possíveis do Tool Service; gerar um servidor MCP, sozinho, não demonstra integração operacional. A decisão sobre a esteira, a contribuição do REA e a prontidão da V2 devem ser tomadas separadamente.</p><p>A revisão usa as 28 páginas de “Arquitetura LYNN Agent Engine”, fornecidas pelo usuário. As responsabilidades descritas no anexo são referência de arquitetura, não comprovação de disponibilidade no ambiente do piloto. Metas, cronograma e controles adicionais continuam propostas.</p><h3>Mensagem central</h3><p>A proposta é tornar repetível o trabalho entre uma necessidade de negócio e uma capacidade homologada no catálogo. A IA ajuda a descobrir interfaces, especificar contratos, gerar adaptadores e preparar testes. Produto, plataforma e QA continuam responsáveis pelo aceite.</p>
+      <p>O REA é uma opção de ferramenta de engenharia. A iniciativa pode prosseguir com ferramentas convencionais de IA se elas entregarem quase todo o benefício.</p>
+      <h3>Status e base</h3><p>Este material consolida o briefing “LYNN Studio — Aceleração da criação de tools e MCPs” e a conversa de Ramon Martins da Silva com Giovani Zamboni em 21/10/2026. Prazos, amostra, alocação e metas são propostas. Os experimentos ainda não foram executados.</p>
+      <p>Fontes de contexto: <a href="https://presentations.lynn.totvs.ai/demo-lynn/index.html" target="_blank" rel="noopener noreferrer">Apresentação LYNN fornecida</a> e <a href="https://www.totvs.com/blog/inovacoes/totvs-lanca-lynn-foundation-de-ia/" target="_blank" rel="noopener noreferrer">TOTVS: foundation LYNN</a>.</p>
+    </template>
+  </section>
+
+  <section class="slide v2-context" id="slide-2" data-title="A V2 executa; a esteira amplia as capacidades" aria-labelledby="title-2">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>FOUNDATION + AGENT ENGINE V2</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <h2 id="title-2">A V2 organiza a execução.<br> A esteira amplia o que ela executa.</h2>
+      <p class="lead">No foundation, o Agent Engine coordena tarefas por eventos, registra tentativas e permite retomada.</p>
+      <div class="v2-context-grid">
+        <div class="v2-engine-overview">
+          <span class="eyebrow">COMO A V2 EXECUTA UM FLUXO</span>
+          <div class="v2-overview-step"><b>01</b><div><strong>Gateway recebe o agente</strong><p>Resolve o manifesto e fixa uma cópia para a execução.</p></div></div>
+          <div class="v2-overview-step"><b>02</b><div><strong>Process Manager coordena</strong><p>Despacha etapas pelo Event Bus e trata respostas e novas tentativas.</p></div></div>
+          <div class="v2-overview-step"><b>03</b><div><strong>Serviços especialistas executam</strong><p>LLM, tools, memória e aprovações. <em>Tool Service</em> conecta operações externas.</p></div></div>
+          <div class="v2-durable"><strong>Trace Store</strong><span>Execução + tentativas persistidas; contexto reconstruído na retomada.</span></div>
+        </div>
+        <div class="v2-opportunity">
+          <p class="eyebrow accent">O ATIVO QUE A PROPOSTA ACRESCENTA</p>
+          <h3>Capacidades de negócio prontas para esse motor.</h3>
+          <p>Descobrir a interface, traduzir a operação e comprovar seu funcionamento no LYNN.</p>
+          <div class="definition"><strong>Tool</strong><span>Operação delimitada, com contrato e regras de uso.</span></div>
+          <div class="definition"><strong>HTTP / MCP</strong><span>Rotas de integração do Tool Service com o produto.</span></div>
+          <div class="v2-open-scope"><strong>Catálogo e publicação</strong><span>Curadoria, promoção e depreciação de tools ainda precisam de um desenho próprio no piloto.</span></div>
+        </div>
+      </div>
+      <footer class="slide-footer"><span>Arquitetura LYNN Agent Engine, pp. 6–8, 12, 16 e 23 · Catálogo de tools: escopo proposto</span><span>02 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>Encaixe no foundation</h3><p>A apresentação de referência situa Builder, Enterprise Layer, Governance, SmartLink e LYNN DATA no foundation. O novo anexo detalha o Agent Engine: Gateway, Process Manager, Event Bus, serviços especialistas e persistência. A proposta se conecta a esse motor pela capacidade de executar operações suportadas dos produtos.</p>
+      <h3>O que a arquitetura V2 descreve</h3><p>O Gateway resolve um agente publicado por ID e versão em LYNN Agents ou recebe um manifesto inline, útil para testes e CI/CD. O manifesto resolvido é preservado como snapshot no Trace (p. 8). O Process Manager interpreta transições e coordena serviços por mensagens (pp. 6 e 14). O Tool Service suporta HTTP, SMTP e MCP; a matriz inclui nós tool, api_client e email (pp. 16 e 23).</p><p>Trace representa a execução; Span representa uma tentativa atômica de uma etapa. PostgreSQL é a fonte durável. Redis apoia locks, coordenação e temporização efêmera. O Context é uma projeção reconstruída a partir dos estados persistidos, manifesto e sessão (pp. 11–12 e 18).</p>
+      <h3>O que precisa ser desenhado</h3><p>LYNN Agents e o snapshot do manifesto não comprovam um catálogo de tools com descoberta, curadoria, promoção, ownership e depreciação. O anexo mostra tools: [] no manifesto, mas não especifica esse ciclo. O piloto deve definir o mínimo necessário e sua relação com SmartLink e os componentes existentes, evitando construir um catálogo paralelo sem alinhamento.</p><p>O snapshot fixa o manifesto do agente, não necessariamente a implementação externa da tool. Contrato e adaptador também precisam de versões e política de compatibilidade explícitas.</p><p>“V2” é o nome da evolução arquitetural. O exemplo do PDF mantém schema “lynn/v1” (pp. 3 e 7); não se deve deduzir um schema “lynn/v2”.</p>
+      <p>Fontes: Arquitetura LYNN Agent Engine, pp. 3–8, 11–12, 16, 18 e 23; <a href="https://presentations.lynn.totvs.ai/demo-lynn/mandala.html" target="_blank" rel="noopener noreferrer">referência do foundation</a>. O briefing usa “LYNN Studio”; a referência usa “LYNN Builder”. Os nomes são preservados nos contextos fornecidos.</p>
+    </template>
+  </section>
+
+  <section class="slide light" id="slide-3" data-title="Três caminhos para ampliar a cobertura" aria-labelledby="title-3">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>ESTRATÉGIA DE CRIAÇÃO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <h2 id="title-3">Três caminhos para<br> ampliar a cobertura</h2>
+      <p class="lead">A rota depende do que o produto já oferece. Todas convergem para uma capacidade homologada.</p>
+      <div class="route-table" role="table" aria-label="Lacunas e rotas propostas">
+        <div class="route-head" role="row"><span role="columnheader">LACUNA</span><span role="columnheader">O QUE ENCONTRAMOS</span><span role="columnheader">COMO A IA AJUDA</span><span role="columnheader">RESULTADO</span></div>
+        <div class="route-row" role="row"><div class="route-name" role="cell"><span>01</span><strong>Publicação</strong></div><p role="cell">API ou serviço<br> já documentado.</p><p role="cell">Traduz contrato técnico em uma<br> operação clara para o agente.</p><div role="cell"><strong>Adaptar + curar</strong><span>Primeira frente de escala</span></div></div>
+        <div class="route-row" role="row"><div class="route-name" role="cell"><span>02</span><strong>Descoberta</strong></div><p role="cell">Interface existente,<br> mas pouco conhecida.</p><p role="cell">Investiga objetos, metadados,<br> código e demonstrações.</p><div role="cell"><strong>Identificar + especificar</strong><span>REA como candidato</span></div></div>
+        <div class="route-row" role="row"><div class="route-name" role="cell"><span>03</span><strong>Interface</strong></div><p role="cell">A função existe, mas falta<br> uma integração estável.</p><p role="cell">Apoia a criação de um serviço<br> sobre a lógica do produto.</p><div role="cell"><strong>Projetar com produto</strong><span>Maior esforço de engenharia</span></div></div>
+      </div>
+      <div class="takeaway"><span>ATIVO ESTRATÉGICO</span><p>Todas as rotas entregam contrato + adaptador versionado + testes + integração V2. Skills podem combinar as tools em processos.</p></div>
+      <footer class="slide-footer"><span>Rotas propostas · Compatibilidade depende de produto, versão e configuração</span><span>03 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>Pontos de partida concretos</h3><p>Protheus possui catálogo de APIs nativas. A documentação de Datasul financeiro descreve APIs e o contrato apipublicfin.json. No RM RH, a documentação mostra identificação de DataServers a partir da tela e consulta de metadados pelo TOTVS WS Client. Esses ativos devem ser investigados antes de criar uma necessidade artificial de engenharia reversa.</p>
+      <p>A conversa cita descoberta por objetos de negócio e SmartX como inspiração. Isso permanece hipótese técnica. É preciso confirmar mecanismo, cobertura, suporte e compatibilidade antes de colocá-lo no caminho de execução.</p>
+      <p>Geração por OpenAPI pode acelerar o adaptador, mas uma API complexa ainda exige curadoria do nome, dos parâmetros e do escopo da tool. Operações de preço, crédito, estoque ou tributos devem preservar as regras suportadas pelo produto.</p>
+      <h3>Fontes</h3><ul><li><a href="https://centraldeatendimento.totvs.com/hc/pt-br/articles/28155083199255-Cross-Segmentos-TOTVS-Backoffice-Linha-Protheus-ADVPL-API-TOTVS-padr%C3%B5es-dispon%C3%ADveis" target="_blank" rel="noopener noreferrer">TOTVS: APIs nativas Protheus</a></li><li><a href="https://centraldeatendimento.totvs.com/hc/pt-br/articles/8558918670103-Cross-Segmentos-Linha-Datasul-ACR-API-API-REST-no-financeiro" target="_blank" rel="noopener noreferrer">TOTVS: APIs REST do financeiro Datasul</a></li><li><a href="https://centraldeatendimento.totvs.com/hc/pt-br/articles/37535317324823-RH-RM-FOP-Como-identificar-e-consumir-DataServer-e-API-dispon%C3%ADveis-nos-produtos-de-RH" target="_blank" rel="noopener noreferrer">TOTVS: DataServers e APIs RM RH</a></li><li><a href="https://gofastmcp.com/integrations/openapi" target="_blank" rel="noopener noreferrer">FastMCP: OpenAPI e curadoria de tools</a></li></ul><p>Os pontos TOTVS acima são referências documentais do briefing. Não representam teste de integração neste projeto. Conversa: 22:10–32:51.</p>
+    </template>
+  </section>
+
+  <section class="slide" id="slide-4" data-title="Exemplo: uma capacidade para apoiar a cobrança" aria-labelledby="title-4">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>EXEMPLO ILUSTRATIVO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <h2 id="title-4">Uma capacidade para<br> apoiar a cobrança</h2>
+      <p class="lead">O especialista demonstra a tarefa. A IA prepara a candidata. Produto e QA verificam o significado e o resultado.</p>
+      <div class="example-layout">
+        <div class="request-block"><span class="eyebrow">PEDIDO AO AGENTE</span><blockquote>“Liste os títulos vencidos deste cliente e explique quais compõem o saldo.”</blockquote><div class="example-steps"><p><b>1</b><span>Especialista mostra a consulta no ERP e suas variações.</span></p><p><b>2</b><span>IA relaciona evidências, interface e contrato candidato.</span></p><p><b>3</b><span>Produto esclarece saldo, pagamentos parciais e renegociação.</span></p></div></div>
+        <div class="tool-spec"><div class="spec-top"><span>TOOL CANDIDATA</span><span>Exemplo hipotético</span></div><h3>consultar_titulos_<wbr>em_aberto</h3><dl><div><dt>Recebe</dt><dd>Cliente, data de referência e paginação.</dd></div><div><dt>Valida</dt><dd>Tenant e identidade confiáveis; empresa e filial autorizadas.</dd></div><div><dt>Retorna</dt><dd>Título, vencimento, moeda, saldo, situação e momento da consulta.</dd></div></dl><div class="spec-accept"><span>ACEITE DA TAREFA COMPLETA</span><p>Resultado fiel ao ERP, com versão identificada e evidência da execução em Trace / Span.</p></div></div>
+      </div>
+      <footer class="slide-footer"><span>Contrato ilustrativo · Incluir timeout, erros, versão e referência a Secrets · Testar vazio, paginação e acesso negado</span><span>04 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>O que uma demonstração revela</h3><p>A demonstração é uma especificação inicial. Ela mostra uma tarefa, o resultado esperado e pistas sobre a interface. A investigação precisa registrar o que foi observado, o que foi derivado, o que é inferência e o que ainda precisa de confirmação.</p>
+      <p>O retorno completo pode incluir identificador, vencimento, moeda, valor original, saldo, situação e instante da consulta. Produto define o significado de “em aberto” e “vencido”, considerando pagamentos parciais, renegociação e referência temporal. O teste compara os dados a uma referência independente.</p>
+      <h3>Contrato para execução V2</h3><p>Registrar interface suportada, transporte, versões e compatibilidade, entradas/saídas, erros de negócio e transitórios, timeout e política de novas tentativas. Tenant e identidade devem vir de origem confiável; parâmetros gerados pelo agente não concedem autorização. O produto valida empresa, filial e usuário. Credenciais são referenciadas via LYNN Secrets, sem valores em prompts ou evidências (anexo, pp. 10, 13, 16–17 e 21–22).</p><p>Uma consulta repetida pode observar um saldo diferente após movimentações. Esclarecer data de referência, instante da resposta e consistência entre páginas. COMPLETED no Engine deve ser confrontado com o resultado esperado no produto.</p><h3>Casos de aceite</h3><ul><li>Cliente sem títulos, páginas adicionais e datas de corte.</li><li>Usuários com permissões diferentes e contextos empresariais distintos.</li><li>Saldo após pagamento parcial e títulos renegociados.</li><li>Escolha correta da tool, preenchimento dos filtros e interpretação fiel pelo agente.</li></ul><p>O exemplo é hipotético. Não afirma que existe um endpoint ou uma tool com esse nome no catálogo atual.</p><p>Fonte: briefing fornecido, seções 4.2 e 6.</p>
+    </template>
+  </section>
+
+  <section class="slide v2-architecture" id="slide-5" data-title="Da investigação à execução pelo Tool Service" aria-labelledby="title-5">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>ARQUITETURA PROPOSTA SOBRE A V2</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <h2 id="title-5">Da investigação à capacidade<br> executável pelo LYNN.</h2>
+      <div class="architecture">
+        <div class="engineering-lane"><div class="lane-label"><span>01</span><strong>ENGENHARIA ASSISTIDA</strong><small>IA convencional + REA, quando útil</small></div>
+          <div class="pipeline"><div class="pipeline-node sources"><strong>Fontes do produto</strong><span>APIs, metadados, código<br> e demonstrações</span></div><div class="pipe-arrow" aria-hidden="true">→</div><div class="pipeline-node"><strong>Pacote candidato</strong><span>Contrato + adaptador<br> Testes + versões</span></div><div class="pipe-arrow" aria-hidden="true">→</div><div class="pipeline-node"><strong>Integração V2</strong><span>Tool Service + Secrets<br> Manifesto de teste</span></div><div class="pipe-arrow" aria-hidden="true">→</div><div class="pipeline-node gate"><strong>Homologação</strong><span>Negócio + isolamento<br> Falhas + retomada</span></div></div>
+        </div>
+        <div class="promotion-line"><span>Promover após aceite de produto e QA</span><span>Catálogo e ciclo de publicação: definir com plataforma</span></div>
+        <div class="runtime-lane"><div class="lane-label"><span>02</span><strong>EXECUÇÃO NO AGENT ENGINE</strong><small>Fluxo lógico; solicitações e respostas por eventos</small></div>
+          <div class="v2-runtime-flow"><div><small>ENTRADA</small><strong>Gateway</strong><span>Identidade + snapshot<br> do manifesto</span></div><b aria-hidden="true">→</b><div><small>COORDENAÇÃO</small><strong>Process Manager</strong><span>Event Bus / Pub/Sub<br> Despacho e retomada</span></div><b aria-hidden="true">↔</b><div class="v2-tool-service"><small>INTEGRAÇÃO</small><strong>Tool Service</strong><span>HTTP ou MCP<br> Integração com Secrets</span></div><b aria-hidden="true">↔</b><div><small>FRONTEIRA DO PRODUTO</small><strong>Interface do ERP</strong><span>Regras, permissões<br> e efeito de negócio</span></div></div>
+          <div class="v2-runtime-state"><strong>Trace Store</strong><span>Execução e tentativas duráveis</span><i></i><strong>Redis</strong><span>Coordenação efêmera</span></div>
+        </div>
+        <div class="v2-boundary"><strong>Uma nova tentativa pode repetir a chamada.</strong><p>Para escritas, validar idempotência ou reconciliação no ERP. A outbox do motor não torna essa operação uma transação única.</p></div>
+      </div>
+      <footer class="slide-footer"><span>Arquitetura LYNN Agent Engine, pp. 8, 14–18, 21 e 23 · Primeiro percurso: consulta de baixo risco</span><span>05 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>Separação de responsabilidades</h3><p>REA e geração de artefatos ficam na engenharia. O caminho operacional utiliza o Tool Service, por HTTP ou MCP conforme o contrato suportado, e uma interface do ERP que preserve suas regras. O diagrama mostra o fluxo lógico: Process Manager e serviços recebem e devolvem mensagens pelo Event Bus. Não é uma cadeia síncrona direta entre todos os componentes.</p>
+      <h3>Pacote mínimo proposto</h3><ul><li>Contrato funcional: objetivo, semântica, entradas, saídas, erros, limites e efeitos.</li><li>Adaptador e contrato versionados; interface suportada e matriz de compatibilidade do produto.</li><li>Configuração de integração ao Tool Service e manifesto de teste válido, inicialmente inline quando adequado.</li><li>Origem confiável de tenant/identidade, autorização de contexto empresarial e referências a LYNN Secrets.</li><li>Timeout, classificação de falhas, política de retry e resposta a resultado incerto; idempotência ou reconciliação para escritas.</li><li>Testes independentes de negócio, integração, isolamento e recuperação; evidências por Trace/Span; responsável pelo aceite e manutenção.</li></ul><p>Esta lista é uma proposta de entregáveis. O anexo não fornece o schema completo de integração ao Tool Service; não há aqui um contrato wire oficial inventado.</p>
+      <h3>Persistência e efeitos no produto</h3><p>O barramento admite entrega at-least-once: eventos podem ser recebidos novamente (p. 17). Trace e outbox são gravados na mesma transação do motor; o worker publica depois (p. 18). Essa garantia não inclui uma transação conjunta com o ERP.</p><p>Caso obrigatório para uma escrita: o ERP efetiva a operação, mas a resposta se perde. Uma nova tentativa não pode simplesmente repetir o efeito. Definir uma chave de operação estável e mecanismo suportado de consulta/reconciliação, ou limitar o escopo até resolver essa fronteira. event_id e attempt do motor, isoladamente, não demonstram essa propriedade de negócio. Cancelar o fluxo também não desfaz um efeito já confirmado.</p><p>O Context é reconstruído a cada ciclo (p. 12). Adaptadores não podem depender de variáveis globais ou da memória local de um worker para continuidade. Persistir o necessário para recuperar e explicar cada tentativa.</p>
+      <h3>Aprovação de artefato e HITL</h3><p>A revisão de produto/QA promove uma candidata na esteira de engenharia. Uma aprovação humana durante a execução é outra necessidade: a V2 descreve HITL Service, estado WAITING_HITL e callback humano. Timers pertencem a WAITING_CALLBACK, coordenados pelo Process Manager (p. 19). Só incluir esses mecanismos nos casos que deles dependem.</p>
+      <h3>Decisões técnicas a fechar no gate inicial</h3><ul><li>Contrato disponível do Tool Service: transporte, erros, retries e binding MCP/SmartLink.</li><li>Ponto de resolução de Secrets: a p. 13 menciona Gateway/Process Manager; a p. 21 descreve obtenção pelo Tool Service. Confirmar o contrato e manter valores fora de prompts, contexto serializado e logs.</li><li>Delegação de identidade e autorização no ERP. tenant_id e schemas isolados no Engine não substituem permissões de usuário, empresa e filial.</li><li>Versão da tool externa e propagação da correlação Trace/Span até o produto; o snapshot do manifesto não congela automaticamente seu código.</li><li>Lifecycle e fonte oficial do catálogo de tools: dono, curadoria, promoção e depreciação.</li></ul><p>Code Runner não é o caminho padrão desse piloto. O anexo cita Cloud Functions nas pp. 5/16 e Cloud Run Jobs no diagrama p. 28; confirmar apenas se algum caso exigir scripts isolados. Isso não demonstra execução nativa de AdvPL/TL++ nos Runners.</p><p>Fonte: Arquitetura LYNN Agent Engine, pp. 7–8, 10–19, 21–25 e 27–28. A disponibilidade efetiva é objeto do gate, não uma conclusão desta revisão.</p>
+    </template>
+  </section>
+
+  <section class="slide simulation-slide" id="slide-6" data-title="Simulação: REA e a rotina FINA040 do Protheus" aria-labelledby="title-6">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>COMPONENTE CANDIDATO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+      <div class="simulation-layout">
+        <div class="simulation-copy">
+          <p class="eyebrow accent">EXPERIÊNCIA PROPOSTA</p>
+          <h2 id="title-6">Uma rotina<br> do Protheus.<br> Uma tool<br> candidata.</h2>
+          <p class="simulation-lead">O especialista de produto acompanha a descoberta assistida pelo REA e revisa o contrato.</p>
+          <ol class="sim-guide"><li><b>01</b><span><strong>Seleciona e demonstra</strong>FINA040 · Contas a Receber</span></li><li><b>02</b><span><strong>Investiga com IA + REA</strong>Fontes AdvPL/TL++, metadados e comportamento.</span></li><li><b>03</b><span><strong>Revisa a candidata</strong>Contrato, destino Tool Service e pendências de teste na V2.</span></li></ol>
+          <p class="sim-legend">Simulação interativa com dados fictícios. Compatibilidade REA com AdvPL/TL++ a validar.</p>
+        </div>
+        <div class="notebook-column">
+          <div class="notebook-stage">
+            <img class="notebook-image" src="assets/notebook-rea.png" alt="Notebook aberto com a simulação de descoberta de uma tool Protheus na tela" width="1536" height="1024">
+            <div class="notebook-screen" data-no-swipe>
+              <div class="sim-app" id="sim-app">
+                <div class="sim-appbar"><strong>LYNN <span>Tool Lab</span></strong><span>SIMULAÇÃO</span><small>Especialista de produto</small></div>
+                <div class="sim-context"><span>PROTHEUS / FINANCEIRO</span><span>Homologação · dados fictícios</span></div>
+                <div class="sim-tabs" role="tablist" aria-label="Etapas da simulação"><button role="tab" id="sim-tab-1" aria-selected="true" aria-controls="sim-panel-1" data-sim-step="1">1. Rotina e fontes</button><button role="tab" id="sim-tab-2" aria-selected="false" aria-controls="sim-panel-2" data-sim-step="2">2. Investigação REA</button><button role="tab" id="sim-tab-3" aria-selected="false" aria-controls="sim-panel-3" data-sim-step="3">3. Tool candidata</button></div>
+                <div class="sim-panels">
+                  <section class="sim-panel" id="sim-panel-1" role="tabpanel" aria-labelledby="sim-tab-1">
+                    <h3>Qual capacidade você quer disponibilizar?</h3>
+                    <div class="sim-field-grid"><div><span>ROTINA SELECIONADA</span><strong>FINA040 · Contas a Receber</strong></div><div><span>BASE DO PRODUTO</span><strong>AdvPL / TL++</strong></div></div>
+                    <div class="sim-request"><span>OBJETIVO DE NEGÓCIO</span><p>Consultar os títulos em aberto de um cliente, por filial e vencimento.</p></div>
+                    <div class="sim-source-line"><span>FONTES DO EXPERIMENTO</span><p><i>✓</i> Demonstração da rotina <i>✓</i> Fontes autorizados .prw / .tlpp</p><p><i>✓</i> Dicionário de dados <i>✓</i> Documentação funcional</p></div>
+                    <div class="sim-action-row"><small>Escopo proposto: consulta, sem alterar títulos.</small><button class="sim-primary" data-sim-next="2">Simular análise com REA <span>→</span></button></div>
+                  </section>
+                  <section class="sim-panel" id="sim-panel-2" role="tabpanel" aria-labelledby="sim-tab-2" hidden>
+                    <div class="sim-panel-heading"><h3>Investigação assistida pelo REA</h3><span>Resultado ilustrativo</span></div>
+                    <div class="sim-investigation"><div class="sim-evidence"><span>EVIDÊNCIAS RELACIONADAS</span><p><b>01</b><strong>Rotina e intenção</strong><small>FINA040 / consulta de títulos em aberto</small></p><p><b>02</b><strong>Fontes e metadados</strong><small>AdvPL / TL++ · entidade SE1</small></p><p><b>03</b><strong>Mapeamento candidato</strong><small>Cliente + loja / vencimento / saldo</small></p></div><div class="sim-mapping"><span>CONTRATO EM CONSTRUÇÃO</span><code>cliente&nbsp; ← E1_CLIENTE<br> loja&nbsp;&nbsp;&nbsp;&nbsp; ← E1_LOJA<br> titulo&nbsp;&nbsp; ← E1_NUM<br> saldo&nbsp;&nbsp;&nbsp; ← E1_SALDO</code><p>Validar regra de saldo, contexto de filial e interface suportada.</p></div></div>
+                    <div class="sim-action-row"><small>Fontes autorizadas + análise assistida. Sem executar o ERP.</small><button class="sim-primary" data-sim-next="3">Revisar tool candidata <span>→</span></button></div>
+                  </section>
+                  <section class="sim-panel" id="sim-panel-3" role="tabpanel" aria-labelledby="sim-tab-3" hidden>
+                    <div class="sim-panel-heading"><h3>Pacote pronto para revisão</h3><span>v0.1 · CANDIDATA</span></div>
+                    <div class="sim-tool-name">consultar_titulos_em_aberto</div>
+                    <div class="sim-contract"><p><b>Entradas</b><span>Cliente + loja, período de vencimento, paginação.</span></p><p><b>Contexto</b><span>Tenant confiável; usuário, empresa e filial autorizados.</span></p><p><b>Saída</b><span>Título, parcela, vencimento e saldo em aberto.</span></p></div>
+                    <div class="sim-v2-target"><span>DESTINO PROPOSTO</span><strong>Tool Service · HTTP / MCP a validar</strong><small>Credencial: referência LYNN Secrets · Manifesto de teste</small></div>
+                    <div class="sim-pending"><strong>Teste V2 pendente</strong><span>Conferir saldo, autorização e redelivery. Anexar Trace / Spans ao aceite.</span></div>
+                    <div class="sim-action-row"><small id="sim-review-status" role="status">Pacote candidato; homologação operacional pendente.</small><button class="sim-primary" id="sim-review">Simular envio à revisão <span>→</span></button></div>
+                  </section>
+                </div>
+                <div class="sim-app-footer"><span>REA na engenharia · regras do ERP preservadas</span><span>Proposta de interface, não tela nativa do REA</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="simulation-controls"><button id="sim-restart">↺ Reiniciar simulação</button><button id="sim-expand">Ampliar a tela ↗</button><span>Clique nas etapas para explorar o fluxo.</span></div>
+        </div>
+      </div>
+      <footer class="slide-footer"><span>FINA040: <a href="https://tdn.totvs.com/display/PROT/Contas%2Ba%2BReceber%2B-%2BFINA040%2B-%2BFinanceiro%2B-%2BP12" target="_blank" rel="noopener noreferrer">documentação TOTVS</a> · Interface proposta · Replay não comprova integração operacional</span><span>06 / 10</span></footer>
+    </div>
+    <template class="notes">
+      <h3>Encaixe na V2</h3><p>A terceira etapa explicita a entrega candidata: integração ao Tool Service, referência a Secrets, versão inicial e manifesto de teste. A revisão humana desse artefato não é uma execução do HITL Service. O próximo passo real seria rodar a consulta pelo Engine e reunir Trace/Spans e evidência independente do resultado no ERP. Nenhum trace real é apresentado aqui. Fonte: Arquitetura LYNN Agent Engine, pp. 8, 11, 16 e 21.</p><h3>Como ler esta simulação</h3><p>O notebook mostra um protótipo interativo da experiência proposta para um especialista de produto. “Tool Lab” é um nome ilustrativo da interface, não uma funcionalidade lançada do LYNN ou uma tela nativa do REA. Os botões trocam estados locais e não acessam Protheus, REA, repositórios ou serviços.</p><p>O recorte usa Protheus Financeiro (SIGAFIN), rotina Contas a Receber (FINA040). A demonstração e os fontes autorizados orientam a descoberta de uma tool de consulta. A referência a AdvPL/TL++ descreve o ecossistema do produto, sem afirmar que a rotina foi reescrita em TL++ ou que o REA suporta essas linguagens.</p><p>SE1 e os campos E1_CLIENTE, E1_LOJA, E1_NUM e E1_SALDO são pistas de mapeamento, não uma implementação de acesso direto ao banco. A interface suportada, contexto de filial, regra de saldo e permissões permanecem pendentes de validação. Nenhum código interno TOTVS foi incluído ou executado.</p><p>Fontes: <a href="https://tdn.totvs.com/display/PROT/Contas%2Ba%2BReceber%2B-%2BFINA040%2B-%2BFinanceiro%2B-%2BP12" target="_blank" rel="noopener noreferrer">FINA040</a>, <a href="https://tdn.totvs.com/display/tec/TLPP" target="_blank" rel="noopener noreferrer">TLPP</a> e <a href="https://tdn.totvs.com/plugins/viewsource/viewpagesrc.action?pageId=864345302" target="_blank" rel="noopener noreferrer">mapeamento financeiro SE1</a>.</p>
+      <h3>Escopo e limites</h3><p>O README do REA descreve superfícies como JavaScript/Electron, assemblies .NET, binários nativos, websites e capturas de rede. Não houve instalação ou teste do REA em ambientes TOTVS nesta elaboração. O briefing não confirmou suporte dedicado a AdvPL/TLPP ou Progress/ABL.</p>
+      <p>O MCP de replay descrito na documentação responde com evidências retidas. Não chama a aplicação original. Escritas não modificam estado e corpos POST, PUT e PATCH são ignorados no comportamento documentado pelo briefing. Correspondências inexatas devem ser rejeitadas como prova de homologação.</p>
+      <h3>Reprodutibilidade</h3><p>Na análise documental do briefing, em 21/10/2026, a release identificada era 6.7.0, de 18/10/2026, e a implementação de replay havia entrado depois em main. Essa é uma fotografia da fonte, não uma afirmação sobre a release mais recente no momento do piloto. Fixar commit, versão, dependências e recursos efetivamente utilizados. Snapshot citado: <code>01788bac863ac786bfbb648cad69b11e23b40a89</code>.</p>
+      <p>Análise local de arquivos não garante ausência de envio ao provedor do modelo. Selecionar e tratar evidências e credenciais antes do uso com IA.</p>
+      <h3>Fontes</h3><ul><li><a href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer">REA: repositório e escopo</a></li><li><a href="https://github.com/morluto/rea/blob/main/docs/web-network-captures.md" target="_blank" rel="noopener noreferrer">Capturas de rede e limites</a></li><li><a href="https://github.com/morluto/rea/blob/main/docs/agent-environments.md" target="_blank" rel="noopener noreferrer">Ambientes MCP de replay</a></li><li><a href="https://github.com/morluto/rea/blob/main/docs/tool-design.md" target="_blank" rel="noopener noreferrer">Desenho de ferramentas e evidências</a></li><li><a href="https://github.com/morluto/rea/releases/tag/rea-agents-6.7.0" target="_blank" rel="noopener noreferrer">Release 6.7.0 citada no briefing</a></li><li><a href="https://github.com/morluto/rea/commit/10f1994fe1a0bbddeb846ee8078a80a483a652f1" target="_blank" rel="noopener noreferrer">Commit de introdução do replay citado no briefing</a></li></ul>
+    </template>
+  </section>
+
+  <section class="slide" id="slide-7" data-title="Experimento: ganho da esteira e contribuição do REA" aria-labelledby="title-7">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>DESENHO EXPERIMENTAL PROPOSTO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+
+      <h2 id="title-7">O ganho da esteira<br> e a contribuição do REA</h2>
+      <div class="sample-equation"><div><b>2</b><span>produtos</span></div><i>×</i><div><b>3</b><span>classes de origem</span></div><i>×</i><div><b>2</b><span>casos por classe</span></div><i>=</i><div class="sample-total"><b>12</b><span>capacidades, como teto</span></div><p>Contrato existente<br> Código / metadados<br> Observação / investigação</p></div>
+      <div class="experiment-arms"><div class="arm"><span class="arm-letter">A</span><h3>Processo atual</h3><p>Práticas e ferramentas<br> já utilizadas pelo time.</p><span class="arm-caption">Referência de esforço e qualidade</span></div><div class="arm"><span class="arm-letter">B</span><h3>Esteira com IA</h3><p>Contratos e adaptadores<br> com IA convencional.</p><span class="arm-caption">B versus A: ganho da abordagem</span></div><div class="arm arm-c"><span class="arm-letter">C</span><h3>Esteira + REA</h3><p>Os mesmos recursos de B,<br> acrescidos do REA.</p><span class="arm-caption">C versus B: contribuição do REA</span></div></div>
+      <div class="sample-detail"><p><b>6 casos em A/B/C</b>Mesma V2 e mesmos testes.</p><p><b>6 casos novos</b>Repetir a rota mais promissora.</p><p><b>Até 24 tentativas</b>Escopo sujeito ao teto de esforço.</p></div>
+      <footer class="slide-footer"><span>Amostra exploratória · Comparar criação sob as mesmas condições de execução · B e C com recursos equivalentes</span><span>07 / 10</span></footer>
+    </div>
+    <template class="notes">
+
+      <h3>Uma comparação útil para a V2</h3><p>Os três braços devem produzir capacidades para o mesmo ambiente e versão do Engine, com a mesma base de integração, dados de avaliação, limites de acesso e critérios de aceite. Versões de manifesto e adaptador precisam ser identificáveis. A comparação mede a abordagem de criação. A não deve executar no legado enquanto C executa na V2, pois isso confundiria os efeitos de arquitetura e ferramentas.</p><p>O processo atual pode já utilizar IA. Nesse caso, B versus A mede o ganho da esteira proposta, não um ganho genérico da IA. B e C devem usar modelo, orçamento, fontes e permissões equivalentes, com o REA como diferença explícita. Evitar transferência das descobertas de C para B durante a medição.</p>
+      <h3>Amostra e esforço</h3><p>O desenho de referência combina dois produtos, três classes de origem e dois casos por combinação. É um teto exploratório de 12 capacidades. Seis casos passam por A/B/C, totalizando 18 tentativas. Outros seis casos verificam repetibilidade, chegando a até 24 tentativas. Tentativas não equivalem a tools homologadas. Confirmar a disponibilidade de cada classe e reduzir o recorte quando necessário, preservando comparações diretas.</p><p>Registrar instalação, configuração, horas do especialista de produto, revisão, testes, falhas e retrabalho. Separar o esforço comum para habilitar a integração V2 dos custos de cada braço, mantendo ambos no custo total da iniciativa. Usar avaliações independentes dos exemplos de construção e incluir tentativas malsucedidas.</p>
+      <h3>Comparabilidade operacional</h3><p>A V2 resolve o manifesto no início e guarda um snapshot. Isso não demonstra congelamento automático do código das ferramentas externas. Fixar também a versão do adaptador e a configuração do ambiente. Usar manifesto inline em testes somente após confirmar o contrato efetivamente disponível no ambiente. O manifesto ilustrado no PDF conserva o schema <code>lynn/v1</code>.</p>
+      <h3>Fontes e status</h3><p>Briefing, seções 7 e 8. Arquitetura LYNN Agent Engine, pp. 3 e 7–8: contratos preservados, validação e resolução do manifesto. Pp. 16 e 23: execução pelo Tool Service. Amostra, alocação e desenho A/B/C são propostas. O PDF descreve a arquitetura e não comprova implantação ou disponibilidade no ambiente do piloto.</p>
+    </template>
+  </section>
+
+  <section class="slide light" id="slide-8" data-title="Plano de seis semanas com gate técnico da V2" aria-labelledby="title-8">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>PLANO TÁTICO PROPOSTO</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+
+      <h2 id="title-8">Seis semanas para testar a ideia<br> com uma integração V2 verificável</h2>
+      <p class="lead">O primeiro marco é uma consulta ponta a ponta. A preparação das candidatas pode avançar em paralelo.</p>
+      <div class="timeline">
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>01</b></div><h3>Recorte e V2</h3><p>Escolher casos, donos e provar uma consulta no Engine.</p><div class="week-gate"><strong>Passagem</strong><span>Versão fixada, isolamento e trace verificáveis.</span></div><small>Plataforma + produto</small></article>
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>02</b></div><h3>Contratos e base</h3><p>Fechar integração de referência, contratos e testes.</p><div class="week-gate"><strong>Passagem</strong><span>Gate V2 concluído e aceite funcional acordado.</span></div><small>Engine + QA + produto</small></article>
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>03</b></div><h3>Comparação</h3><p>Executar A/B/C com o mesmo destino operacional.</p><div class="week-gate"><strong>Passagem</strong><span>Candidatas, horas e falhas registradas.</span></div><small>Engenharia designada</small></article>
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>04</b></div><h3>Homologação</h3><p>Testar tarefas na V2 e aplicar a rota a casos novos.</p><div class="week-gate"><strong>Passagem</strong><span>Resultado no produto e execução no Engine aprovados.</span></div><small>QA + produto + Engine</small></article>
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>05</b></div><h3>Falha e mudança</h3><p>Testar repetição de eventos, indisponibilidade e reparo.</p><div class="week-gate"><strong>Passagem</strong><span>Recuperação comprovada e efeitos conferidos no ERP.</span></div><small>Plataforma + segurança</small></article>
+        <article class="week"><div class="week-top"><span>SEMANA</span><b>06</b></div><h3>Decisão</h3><p>Avaliar ganho da esteira, REA e prontidão operacional.</p><div class="week-gate"><strong>Passagem</strong><span>Rotas a ampliar e backlog com responsáveis.</span></div><small>Lideranças de IA + produto</small></article>
+      </div>
+      <footer class="slide-footer"><span>Prazo de referência condicionado a pessoas e ambientes · A construção integral da V2 fica fora deste ciclo</span><span>08 / 10</span></footer>
+    </div>
+    <template class="notes">
+
+      <h3>Gate técnico nas semanas 1 e 2</h3><p>Selecionar uma consulta de baixo risco, com resultado de referência conhecido, e provar uma fatia funcional: Gateway resolve manifesto, Process Manager despacha um nó <code>tool</code> ou <code>api_client</code>, Tool Service utiliza a integração aprovada com Secrets, a interface suportada do produto aplica as permissões e o retorno fica identificável em Trace/Span.</p><p>O gate deve registrar versões e ambiente, validar uma falha controlada e conferir isolamento entre contextos empresariais. Trace concluído é evidência de execução. Produto e QA também precisam confirmar o resultado de negócio. A documentação da V2 orienta os testes, mas não substitui essa prova no ambiente disponível.</p>
+      <h3>Trabalho que pode avançar antes da V2 integral</h3><p>Seleção de tarefas, demonstrações, investigação de APIs e fontes autorizados, avaliação do REA, geração de contratos/adaptadores e testes independentes podem ocorrer em paralelo. A homologação operacional depende da fatia V2 necessária ao caso. HITL, callbacks e streaming só entram como dependências quando o cenário precisar deles.</p><p>Se o gate não passar, registrar a candidata como validada fora do Engine ou com integração pendente. Prosseguir com a pesquisa de engenharia e ajustar o cronograma da homologação. O ciclo de seis semanas não inclui construir toda a V2. O prazo também depende de pessoas, dados, acessos e ambientes disponíveis.</p>
+      <h3>Execução e acompanhamento</h3><p>Realizar dois checkpoints por semana. Semana 2 fixa contratos, versões, REA e datasets. Semana 3 compara esforços sem excluir falhas. Semana 4 valida as tarefas na V2 e aplica a rota a casos novos. Semana 5 exercita manutenção e recuperação, conferindo tanto a trilha do Engine quanto dados e efeitos no produto. Semana 6 separa a decisão sobre a esteira, sobre o REA e sobre a prontidão operacional.</p><p>Aplicar testes de contrato e negócio a cada candidata. Usar uma suíte compartilhada de falhas para fluxos representativos por produto e transporte, evitando repetir toda a matriz em cada uma das 24 tentativas. O recorte permanece sujeito ao teto de esforço.</p>
+      <h3>Fontes</h3><p>Arquitetura LYNN Agent Engine, pp. 7–8: manifesto e snapshot. Pp. 11 e 14: Trace/Span e ciclo de despacho. Pp. 16 e 21: Tool Service, Secrets e execução ponta a ponta. Pp. 17–20: redelivery, outbox, espera e streaming. Briefing, seções 8–10. Cronograma e critérios de passagem são propostas para o piloto.</p>
+    </template>
+  </section>
+
+  <section class="slide" id="slide-9" data-title="Critérios: esforço, qualidade e operação" aria-labelledby="title-9">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>CRITÉRIOS DE CONTINUIDADE</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+
+      <h2 id="title-9">Eficiência na criação<br> e qualidade na execução</h2>
+      <div class="decision-layout"><div class="efficiency-target"><span class="eyebrow">HIPÓTESE INICIAL, A PACTUAR</span><div class="target-number">40<span>%</span></div><h3>menos esforço<br> até o aceite</h3><p>Comparação com o processo atual, mantendo os critérios de qualidade.</p><small>Meta proposta para o piloto.<br> Resultado ainda não medido.</small></div><div class="criteria"><div class="criterion"><span>01</span><div><h3>Esforço de engenharia</h3><p>Medir preparação, revisão e retrabalho. Separar o custo comum de integrar à V2.</p></div></div><div class="criterion"><span>02</span><div><h3>Qualidade e recuperação</h3><p>Validar negócio, isolamento e retries. Conferir efeitos e resultado no ERP.</p></div></div><div class="criterion"><span>03</span><div><h3>Contribuição adicional do REA</h3><p>C precisa superar B e compensar configuração, dependências e manutenção.</p></div></div><div class="criterion"><span>04</span><div><h3>Desempenho operacional</h3><p>Tempo até a conclusão, custo por tarefa e tempo de diagnóstico e reparo.</p></div></div></div></div>
+      <footer class="slide-footer"><span>Entrega at-least-once exige testes de repetição · Trace completo e resultado de negócio são evidências complementares</span><span>09 / 10</span></footer>
+    </div>
+    <template class="notes">
+
+      <h3>Quatro grupos de medida</h3><ul><li>Engenharia: esforço total até aceite, horas de produto, taxa de candidatas aprovadas, causas de rejeição e retrabalho.</li><li>Qualidade: resultado de negócio, escolha e parâmetros da tool, autorização, contexto empresarial, isolamento e recuperação.</li><li>REA: ganho incremental de C sobre B, incluindo instalação, dependências, manutenção e tentativas malsucedidas.</li><li>Operação: tempo até a conclusão confirmada, sucesso da tarefa completa, tentativas por tarefa, custo por tarefa concluída e tempo de detecção, diagnóstico e reparo.</li></ul><p>A meta de reduzir 40% do esforço é uma hipótese inicial a pactuar. Preparação inicial e custos recorrentes precisam permanecer visíveis. Informar mediana, faixa, tamanho da amostra e rejeições por classe. A amostra exploratória não permite generalizar ausência de falhas para toda a produção.</p>
+      <h3>Latência e evidência de conclusão</h3><p>Medir latência operacional separadamente do esforço humano de criar a capacidade. A V2 reconhece latência adicional dos hops de rede e da persistência de Spans. Recebimento da solicitação, primeiro evento SSE e conclusão da tarefa são momentos diferentes. O streaming descrito acompanha eventos de ciclo de vida e não implica geração token a token em todos os nós. Percentis operacionais exigem execuções repetidas e amostra declarada.</p>
+      <h3>Testes mínimos da integração</h3><p>Para cada candidata, testar resultado esperado, resultado vazio, paginação, erro de negócio, acesso negado e contexto empresarial. Para a integração compartilhada, exercitar snapshot de manifesto, isolamento entre tenants e filiais, segredo mascarado, redelivery de evento, timeout, reinício com evento pendente na outbox e recuperação. Quando usados, incluir callbacks repetidos, espera humana, reconexão do streaming e cancelamento.</p>
+      <h3>Fronteira de consistência</h3><p>A arquitetura descreve entrega at-least-once, deduplicação e transação conjunta entre Trace e Outbox. Isso não comprova execução exatamente uma vez no ERP nem transação distribuída entre o Engine e o produto. Em escrita, um efeito pode ocorrer antes da perda da resposta. Exigir estratégia validada no produto para identificar a operação, consultar ou reconciliar seu resultado e decidir se cabe repetição. Na ausência dessa estratégia, manter o recorte em consulta ou simulação.</p><p>Anotações MCP documentam características, mas não implementam autorização nem idempotência. Cancelar um fluxo não prova reversão de efeitos já realizados no sistema externo. Um Trace completo e o aceite funcional são evidências complementares.</p>
+      <h3>Fontes</h3><p>Arquitetura LYNN Agent Engine, pp. 11 e 24: Trace/Span e estados. Pp. 17–18: at-least-once, deduplicação e outbox. Pp. 19–20: esperas e streaming. P. 22: latência adicional e evolução de tracing. Briefing, seções 11–13. Métricas e testes descritos aqui são critérios propostos, não resultados medidos.</p>
+    </template>
+  </section>
+
+  <section class="slide closing" id="slide-10" data-title="Decisão: piloto, integração V2 e ciclo de vida do catálogo" aria-labelledby="title-10">
+    <div class="slide-content">
+      <header class="slide-header"><span class="brand"><img src="assets/foundation_lynn_logo.png" alt="LYNN" class="lynn-logo"><span>STUDIO</span></span><span>DECISÃO E KICK-OFF</span><span class="company"><img class="totvs-white" src="assets/totvs-logo-transparente.png" alt="TOTVS"><span class="totvs-dark-crop"><img src="assets/totvs-logo_black.png" alt="TOTVS"></span></span></header>
+
+      <div class="closing-top"><div><p class="eyebrow accent">DECISÃO SOLICITADA</p><h2 id="title-10">Aprovar um ciclo<br> delimitado de<br> <span class="gradient-text">experimentação.</span></h2></div><div class="approval-scope"><strong>6 semanas</strong><p>Dois produtos, amostra exploratória<br> e teto de esforço acordado.</p><div class="approval-items"><p><span>01</span>Priorizar capacidades e nomear seus donos.</p><p><span>02</span>Reservar equipe e ambientes de teste.</p><p><span>03</span>Provar uma integração mínima com o Engine.</p><p><span>04</span>Acordar aceite e ciclo de vida do catálogo.</p></div></div></div>
+      <div class="ownership"><div><strong>Patrocínio + líder</strong><span>Prioridades, esforço<br> e decisão do piloto.</span></div><div><strong>Plataforma + Engine</strong><span>Esteira, integração V2<br> e operação das tools.</span></div><div><strong>Produto</strong><span>Interface suportada,<br> semântica e compatibilidade.</span></div><div><strong>QA + segurança</strong><span>Aceite independente,<br> isolamento e recuperação.</span></div></div>
+      <div class="closing-result"><span>DECISÕES AO FINAL</span><p>Ganho da esteira, contribuição do REA e prontidão para operar na V2.</p></div>
+      <footer class="slide-footer"><span>Catálogo proposto: candidata, homologação e publicação versionada · Responsável e manutenção definidos por capacidade</span><span>10 / 10</span></footer>
+    </div>
+    <template class="notes">
+
+      <h3>Decisão concreta para começar</h3><p>Autorizar um piloto de seis semanas com teto de esforço, escolher dois produtos, nomear um líder e reservar especialistas. A liberação de ambientes, dados, interfaces e fontes autorizados permite iniciar a investigação. A homologação operacional exige demonstrar a integração V2 necessária ao caso nas semanas 1 e 2.</p>
+      <h3>Responsabilidades</h3><p>Patrocínio e líder do piloto resolvem prioridades, alocação e dependências. Plataforma constrói a esteira e os adaptadores. Um responsável do Agent Engine confirma contratos e ambiente, conduz a integração e esclarece as garantias observáveis. Produto define semântica, interface suportada, compatibilidade e manutenção da capacidade. QA prepara avaliações independentes. Segurança verifica credenciais, identidade, isolamento e tratamento dos dados.</p>
+      <h3>Ciclo de vida proposto para o catálogo</h3><p>A candidata reúne contrato, adaptador versionado, evidências, testes e dono. A homologação verifica comportamento no produto e no Engine, nos contextos declarados. A publicação registra versão, compatibilidade e responsável. Mudanças futuras exigem política de manutenção, descontinuação e revalidação. Esse ciclo é uma proposta de operação do catálogo e não uma funcionalidade já comprovada pela arquitetura anexada.</p><p>O Gateway pode resolver uma versão publicada do agente em LYNN Agents e preservar o snapshot do manifesto na execução. A versão do contrato e do adaptador externo também precisa ser controlada. A revisão de artefatos por produto/QA não depende automaticamente do HITL Service, cuja função documentada é gerir intervenções humanas na execução.</p>
+      <h3>Decisões separadas na semana 6</h3><ul><li>Esteira: decidir quais rotas geram capacidades com ganho sustentável.</li><li>REA: adotar diretamente, absorver técnicas, seguir com IA convencional ou redesenhar o recorte.</li><li>V2: registrar quais capacidades têm integração homologada e quais ainda dependem de recursos, controles ou ambientes.</li></ul><p>Uma candidata útil pode existir antes de sua integração operacional. Um Engine operacional, por sua vez, não comprova benefício do REA. Cada conclusão precisa de evidência própria.</p>
+      <h3>Fontes e horizonte</h3><p>Arquitetura LYNN Agent Engine, pp. 6 e 16: separação de responsabilidades e serviços. Pp. 8 e 11: snapshot e execução durável. P. 19: HITL. P. 22: limites e evolução da observabilidade. Briefing, seções 10, 13 e 14, e conversa, 47:19–48:51. O catálogo reutilizável e a composição de processos são o horizonte da iniciativa. TaaS não é entrega nem hipótese de receita deste piloto.</p>
+    </template>
+  </section>
+
+</main></div></div>
+
+<nav class="toolbar" aria-label="Controles da apresentação"><div class="toolbar-left"><button id="index-button" title="Índice (I)"><span aria-hidden="true">☷</span> <span>Índice</span></button><button id="notes-button" title="Notas e fontes (N)">Notas e fontes</button></div><div class="toolbar-center"><button id="prev" class="nav-arrow" aria-label="Slide anterior">←</button><span id="counter" aria-live="polite" aria-atomic="true">01 / 10</span><button id="next" class="nav-arrow" aria-label="Próximo slide">→</button></div><div class="toolbar-right"><div id="dots" aria-label="Ir para um slide"></div><button id="print-button" title="Imprimir ou salvar em PDF">Imprimir</button><button id="fullscreen-button" title="Tela cheia (F)" aria-label="Alternar tela cheia">⛶</button></div><div class="progress-track"><div id="progress"></div></div></nav>
+<dialog id="index-dialog" aria-labelledby="index-title"><div class="dialog-heading"><div><p class="eyebrow">LYNN STUDIO</p><h2 id="index-title">Índice da apresentação</h2></div><button class="close-dialog" data-dialog="index-dialog" aria-label="Fechar índice">×</button></div><div id="slide-index"></div><p class="dialog-hint">← → Navegar &nbsp; N Notas &nbsp; I Índice &nbsp; F Tela cheia &nbsp; Esc Fechar</p></dialog>
+<dialog id="notes-dialog" aria-labelledby="notes-title"><div class="dialog-heading"><div><p class="eyebrow">CONTEXTO, DETALHES E FONTES</p><h2 id="notes-title">Notas do slide</h2></div><button class="close-dialog" data-dialog="notes-dialog" aria-label="Fechar notas">×</button></div><div id="notes-body"></div></dialog>
+<dialog id="sim-dialog" aria-label="Tela ampliada da simulação"><div class="sim-dialog-heading"><strong>Simulação de criação de tool · Protheus / FINA040</strong><button class="close-dialog" data-dialog="sim-dialog" aria-label="Fechar tela ampliada">×</button></div><div id="sim-expanded"></div></dialog>
+<div id="status" class="sr-only" role="status"></div>
+<noscript><p class="noscript">JavaScript está desativado. Os 10 slides estão disponíveis em sequência para leitura e impressão.</p></noscript>
+</body>
+</html>
